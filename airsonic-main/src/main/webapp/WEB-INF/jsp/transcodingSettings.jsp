@@ -20,6 +20,7 @@
         <th><fmt:message key="transcodingsettings.targetformat"/></th>
         <th><fmt:message key="transcodingsettings.step1"/></th>
         <th><fmt:message key="transcodingsettings.step2"/></th>
+        <th style="padding-left:1em"><fmt:message key="transcodingsettings.forced"/></th>
         <th style="padding-left:1em"><fmt:message key="common.delete"/></th>
     </tr>
 
@@ -30,12 +31,13 @@
             <td><input class="monospace" name="targetFormat[${transcoding.id}]" size="10" value="${transcoding.targetFormat}"/></td>
             <td><input class="monospace" name="step1[${transcoding.id}]" size="60" value="${transcoding.step1}"/></td>
             <td><input class="monospace" name="step2[${transcoding.id}]" size="22" value="${transcoding.step2}"/></td>
+            <td align="center" style="padding-left:1em"><input type="checkbox" name="forced[${transcoding.id}]" ${transcoding.forced ? "checked" :""}/></td>
             <td align="center" style="padding-left:1em"><input type="checkbox" name="delete[${transcoding.id}]"/></td>
         </tr>
     </c:forEach>
 
     <tr>
-        <th colspan="6" align="left" style="padding-top:1em"><fmt:message key="transcodingsettings.add"/></th>
+        <th colspan="7" align="left" style="padding-top:1em"><fmt:message key="transcodingsettings.add"/></th>
     </tr>
 
     <tr>
@@ -44,6 +46,7 @@
         <td><input class="monospace" name="targetFormat" size="10" placeholder="<fmt:message key='transcodingsettings.targetformat'/>" value="${newTranscoding.targetFormat}"/></td>
         <td><input class="monospace" name="step1" size="60" placeholder="<fmt:message key='transcodingsettings.step1'/>" value="${newTranscoding.step1}"/></td>
         <td><input class="monospace" name="step2" size="22" placeholder="<fmt:message key='transcodingsettings.step2'/>" value="${newTranscoding.step2}"/></td>
+        <td align="center" style="padding-left:1em"><input type="checkbox" name="forced"/></td>
         <td/>
     </tr>
 

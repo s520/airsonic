@@ -84,6 +84,7 @@ public class TranscodingSettingsController {
             String targetFormat = getParameter(request, "targetFormat", id);
             String step1 = getParameter(request, "step1", id);
             String step2 = getParameter(request, "step2", id);
+            boolean forced = getParameter(request, "forced", id) != null;
             boolean delete = getParameter(request, "delete", id) != null;
 
             if (delete) {
@@ -102,6 +103,7 @@ public class TranscodingSettingsController {
                 transcoding.setTargetFormat(targetFormat);
                 transcoding.setStep1(step1);
                 transcoding.setStep2(step2);
+                transcoding.setForced(forced);
                 transcodingService.updateTranscoding(transcoding);
             }
         }
@@ -111,10 +113,11 @@ public class TranscodingSettingsController {
         String targetFormat = StringUtils.trimToNull(request.getParameter("targetFormat"));
         String step1 = StringUtils.trimToNull(request.getParameter("step1"));
         String step2 = StringUtils.trimToNull(request.getParameter("step2"));
+        boolean forced = request.getParameter("forced") != null;
         boolean defaultActive = request.getParameter("defaultActive") != null;
 
         if (name != null || sourceFormats != null || targetFormat != null || step1 != null || step2 != null) {
-            Transcoding transcoding = new Transcoding(null, name, sourceFormats, targetFormat, step1, step2, null, defaultActive);
+            Transcoding transcoding = new Transcoding(null, name, sourceFormats, targetFormat, step1, step2, null, defaultActive, forced);
             String error = null;
             if (name == null) {
                 error = "transcodingsettings.noname";

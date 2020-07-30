@@ -42,6 +42,7 @@ public class Transcoding {
     private String step2;
     private String step3;
     private boolean defaultActive;
+    private boolean forced;
 
     /**
      * Creates a new transcoding specification.
@@ -54,9 +55,10 @@ public class Transcoding {
      * @param step2           The command to execute in step 2.
      * @param step3           The command to execute in step 3.
      * @param defaultActive   Whether the transcoding should be automatically activated for all players.
+     * @param forced          Whether to force transcoding.
      */
     public Transcoding(Integer id, String name, String sourceFormats, String targetFormat, String step1,
-            String step2, String step3, boolean defaultActive) {
+            String step2, String step3, boolean defaultActive, boolean forced) {
         this.id = id;
         this.name = name;
         this.sourceFormats = sourceFormats;
@@ -65,6 +67,7 @@ public class Transcoding {
         this.step2 = step2;
         this.step3 = step3;
         this.defaultActive = defaultActive;
+        this.forced = forced;
     }
 
     /**
@@ -204,6 +207,20 @@ public class Transcoding {
      */
     public void setDefaultActive(boolean defaultActive) {
         this.defaultActive = defaultActive;
+    }
+
+    /**
+     * Returns whether to force transcoding.
+     */
+    public boolean isForced() {
+        return forced;
+    }
+
+    /**
+     * Sets whether to force transcoding.
+     */
+    public void setForced(boolean forced) {
+        this.forced = forced;
     }
 
     public boolean equals(Object o) {

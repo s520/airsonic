@@ -312,7 +312,7 @@ public class CoverArtController implements LastModified {
         VideoTranscodingSettings videoSettings = new VideoTranscodingSettings(width, height, offset, 0, false);
         TranscodingService.Parameters parameters = new TranscodingService.Parameters(mediaFile, videoSettings);
         String command = settingsService.getVideoImageCommand();
-        parameters.setTranscoding(new Transcoding(null, null, null, null, command, null, null, false));
+        parameters.setTranscoding(new Transcoding(null, null, null, null, command, null, null, false, false));
         return transcodingService.getTranscodedInputStream(parameters);
     }
 

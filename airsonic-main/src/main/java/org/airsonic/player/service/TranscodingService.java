@@ -227,7 +227,7 @@ public class TranscodingService {
             maxBitRate = bitRate;
         }
 
-        if (transcoding != null && ((maxBitRate != 0 && (bitRate == 0 || bitRate > maxBitRate)) ||
+        if (transcoding != null && ((maxBitRate != 0 && (bitRate == 0 || bitRate > maxBitRate || transcoding.isForced())) ||
             (preferredTargetFormat != null && ! mediaFile.getFormat().equalsIgnoreCase(preferredTargetFormat)))) {
             parameters.setTranscoding(transcoding);
         }
@@ -410,7 +410,7 @@ public class TranscodingService {
     private Transcoding getTranscoding(MediaFile mediaFile, Player player, String preferredTargetFormat, boolean hls) {
 
         if (hls) {
-            return new Transcoding(null, "hls", mediaFile.getFormat(), "ts", settingsService.getHlsCommand(), null, null, true);
+            return new Transcoding(null, "hls", mediaFile.getFormat(), "ts", settingsService.getHlsCommand(), null, null, true, false);
         }
 
         if (FORMAT_RAW.equals(preferredTargetFormat)) {

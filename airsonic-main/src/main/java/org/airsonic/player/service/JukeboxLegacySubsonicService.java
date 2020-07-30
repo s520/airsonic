@@ -111,7 +111,7 @@ public class JukeboxLegacySubsonicService implements AudioPlayer.Listener {
                     int duration = file.getDurationSeconds() == null ? 0 : file.getDurationSeconds() - offset;
                     TranscodingService.Parameters parameters = new TranscodingService.Parameters(file, new VideoTranscodingSettings(0, 0, offset, duration, false));
                     String command = settingsService.getJukeboxCommand();
-                    parameters.setTranscoding(new Transcoding(null, null, null, null, command, null, null, false));
+                    parameters.setTranscoding(new Transcoding(null, null, null, null, command, null, null, false, false));
                     in = transcodingService.getTranscodedInputStream(parameters);
                     audioPlayer = audioPlayerFactory.createAudioPlayer(in, this);
                     audioPlayer.setGain(gain);

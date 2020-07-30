@@ -34,6 +34,7 @@ public class TranscodingServiceIntTest {
                 "step1",
                 "step2",
                 "step3",
+                true,
                 true);
 
         transcodingService.createTranscoding(transcoding);
